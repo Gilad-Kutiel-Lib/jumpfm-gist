@@ -23,13 +23,17 @@ class GistDialog {
     }
 
     onAccept = (description) => {
-        this.jumpFm.statusBar.info('gist', 'Creating Gist...')
+        this.jumpFm.statusBar.info('gist', {
+            txt: 'Creating Gist...'
+        })
         newPublicGist({
             description: description,
             filesFullPath: this.jumpFm.getActivePanel().getSelectedItemsPaths()
         }, (err, url) => {
-            this.jumpFm.statusBar.info('gist', 'Gist created at ' + url, 5000)
-            this.jumpFm.opn(url)
+            this.jumpFm.statusBar.info('gist', {
+                txt: `Gist created at ${url}`
+            }, 5000)
+            this.jumpFm.electron.shell.openItem(url)
         })
     }
 }
@@ -51,7 +55,7 @@ function newPublicGist(gist: Gist, cb: (err, htmlUrl: string) => void) {
         }
     })
 
-    this.req.post({
+    req.post({
         url: 'https://api.github.com/gists',
         json: true,
         body: data
