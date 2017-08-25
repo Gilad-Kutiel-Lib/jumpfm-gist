@@ -23,16 +23,21 @@ class GistDialog {
     }
 
     onAccept = (description) => {
-        this.jumpFm.statusBar.info('gist', {
-            txt: 'Creating Gist...'
-        })
+        this.jumpFm.statusBar.msg('gist')
+            .setType('info')
+            .setText('Creating Gist...')
+
         newPublicGist({
             description: description,
-            filesFullPath: this.jumpFm.getActivePanel().getSelectedItemsPaths()
+            filesFullPath: this.jumpFm
+                .getPanelActive()
+                .getSelectedItems()
+                .map(item => item.path)
         }, (err, url) => {
-            this.jumpFm.statusBar.info('gist', {
-                txt: `Gist created at ${url}`
-            }, 5000)
+            this.jumpFm.statusBar.msg('gist')
+                .setText(`Gist created at ${url}`)
+                .setClearTimeout(5000)
+
             this.jumpFm.electron.shell.openItem(url)
         })
     }
@@ -66,7 +71,7 @@ function newPublicGist(gist: Gist, cb: (err, htmlUrl: string) => void) {
 
 export const load = (jumpFm: JumpFm) => {
     const gistDialog = new GistDialog(jumpFm)
-    jumpFm.bindKeys('publicGist', ['ctrl+g'], () => {
+    jumpFm.bind('publicGist', ['ctrl+g'], () => {
         jumpFm.dialog.open(gistDialog)
-    }).filterMode()
+    })
 }
