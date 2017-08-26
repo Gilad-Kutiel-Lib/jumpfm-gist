@@ -1,1 +1,1 @@
-A JumpFm plugin that displays the current version.
+A [JumpFm](http://jumpfm.org/) plugin that displays the current version.
