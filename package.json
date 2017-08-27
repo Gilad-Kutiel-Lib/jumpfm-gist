@@ -1,16 +1,26 @@
 {
-    "name": "jumpfm-gist",
-    "version": "1.1.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "fs-extra": "^4.0.1",
-        "path": "^0.12.7",
-        "request": "^2.81.0"
-    }
+  "name": "jumpfm-gist",
+  "version": "1.1.0",
+  "description": "A [JumpFm](http://jumpfm.org/) plugin that displays the current version.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^4.0.1",
+    "path": "^0.12.7",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JumpFm/jumpfm-gist.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/JumpFm/jumpfm-gist/issues"
+  },
+  "homepage": "https://github.com/JumpFm/jumpfm-gist#readme"
 }
